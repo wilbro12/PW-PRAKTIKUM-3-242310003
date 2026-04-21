@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Faktorial dan Deret</title>
+</head>
+<body>
+
+<h2>PERHITUNGAN FAKTORIAL dan DERET</h2>
+
+N: <input type="number" id="n"><br><br>
+
+<button onclick="hitung()">Hitung</button>
+<button onclick="resetForm()">Reset</button>
+
+<h3>Hasil:</h3>
+<p id="faktorial"></p>
+<p id="jumlah"></p>
+
+<script>
+function hitung() {
+    let n = parseInt(document.getElementById("n").value);
+
+    let faktorial = 1;
+    let jumlah = 0;
+
+    for (let i = 1; i <= n; i++) {
+        faktorial *= i;   // perkalian terus (faktorial)
+        jumlah += i;      // penjumlahan terus (deret)
+    }
+
+    document.getElementById("faktorial").innerHTML = "Faktorial: " + faktorial;
+    document.getElementById("jumlah").innerHTML = "Jumlah Deret: " + jumlah;
+}
+
+function resetForm() {
+    document.getElementById("n").value = "";
+    document.getElementById("faktorial").innerHTML = "";
+    document.getElementById("jumlah").innerHTML = "";
+}
+</script>
+
+</body>
+</html>

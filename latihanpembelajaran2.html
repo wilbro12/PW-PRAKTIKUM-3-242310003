@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Tiket Travel</title>
+</head>
+<body>
+
+<h2>Form Pemesanan Tiket</h2>
+
+<form id="formTiket">
+    Nama Pemesan: <br>
+    <input type="text" id="nama"><br><br>
+
+    Tujuan: <br>
+    <select id="tujuan">
+        <option value="jakarta">Jakarta</option>
+        <option value="solo">Solo</option>
+        <option value="surabaya">Surabaya</option>
+    </select><br><br>
+
+    Kelas: <br>
+    <select id="kelas">
+        <option value="eksekutif">Eksekutif</option>
+        <option value="bisnis">Bisnis</option>
+        <option value="ekonomi">Ekonomi</option>
+    </select><br><br>
+
+    Banyak Tiket: <br>
+    <input type="number" id="jumlah"><br><br>
+
+    Status: <br>
+    <input type="radio" name="status" value="member"> Member
+    <input type="radio" name="status" value="non"> Bukan Member<br><br>
+
+    <button type="button" onclick="hitung()">Hitung</button>
+</form>
+
+<h3>Output:</h3>
+<p id="hasil"></p>
+
+<script>
+function hitung() {
+    let nama = document.getElementById("nama").value;
+    let tujuan = document.getElementById("tujuan").value;
+    let kelas = document.getElementById("kelas").value;
+    let jumlah = parseInt(document.getElementById("jumlah").value);
+
+    let status = document.querySelector('input[name="status"]:checked').value;
+
+    let harga = 0;
+
+   
+    if (tujuan === "jakarta") {
+        if (kelas === "eksekutif") harga = 70000;
+        else if (kelas === "bisnis") harga = 40000;
+        else harga = 10000;
+    }
+    else if (tujuan === "solo") {
+        if (kelas === "eksekutif") harga = 80000;
+        else if (kelas === "bisnis") harga = 50000;
+        else harga = 20000;
+    }
+    else {
+        if (kelas === "eksekutif") harga = 90000;
+        else if (kelas === "bisnis") harga = 60000;
+        else harga = 30000;
+    }
+
+    let subtotal = harga * jumlah;
+
+    
+    let diskon = 0;
+    if (status === "member") {
+        diskon = subtotal * 0.1;
+    }
+
+    let total = subtotal - diskon;
+
+    
+    document.getElementById("hasil").innerHTML =
+        "Nama: " + nama + "<br>" +
+        "Harga Tiket: " + harga + "<br>" +
+        "Subtotal: " + subtotal + "<br>" +
+        "Diskon: " + diskon + "<br>" +
+        "Total Bayar: " + total;
+}
+</script>
+
+</body>
+</html>
